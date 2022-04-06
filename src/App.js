@@ -8,12 +8,11 @@ import {
   Cryptocurrencies,
   CryptoDetails,
   ErrorBoundary,
+  Footer,
 } from "./Components";
 
 import "./App.css";
 import "antd/dist/antd.css";
-
-const { Footer } = Layout;
 
 function App() {
   return (
@@ -23,7 +22,7 @@ function App() {
           <Navbar />
         </div>
         <div className="main">
-          <Layout>
+          <Layout style={{ minHeight: "82vh" }}>
             <div className="routes">
               <Routes>
                 <Route path="/" element={<Homepage />} />
@@ -36,36 +35,8 @@ function App() {
                 <Route path="/news" element={<News />} />
               </Routes>
             </div>
-
-            {/* <Footer className="footer" style={{ backgroundColor: "red" }}>
-            <Typography.Title
-              level={5}
-              style={{ color: "white", textAlign: "center" }}
-            >
-              Cryptoverse , <br />
-              All rights reserved
-            </Typography.Title>
-            <Space>
-              <Link to="/">Home</Link>
-              <Link to="/exchanges">Exchanges</Link>
-              <Link to="/news">News</Link>
-            </Space>
-          </Footer> */}
           </Layout>
-          <div className="footer">
-            <Typography.Title
-              level={5}
-              style={{ color: "white", textAlign: "center" }}
-            >
-              Cryptoverse , <br />
-              All rights reserved
-            </Typography.Title>
-            <Space>
-              <Link to="/">Home</Link>
-              <Link to="/exchanges">Exchanges</Link>
-              <Link to="/news">News</Link>
-            </Space>
-          </div>
+          <Footer />
         </div>
       </div>
     </ErrorBoundary>
