@@ -1,5 +1,7 @@
-import { Col, Row, Spin } from "antd";
 import React from "react";
+
+import { Col, Row, Spin } from "antd";
+
 const Loader = () => {
   return (
     <>

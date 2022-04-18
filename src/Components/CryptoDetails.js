@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import HTMLReactParser from "html-react-parser";
 import { useParams } from "react-router-dom";
+
+import HTMLReactParser from "html-react-parser";
 import millify from "millify";
+
 import { Col, Row, Typography, Select } from "antd";
 import {
   MoneyCollectOutlined,
@@ -15,13 +17,13 @@ import {
   ThunderboltOutlined,
 } from "@ant-design/icons";
 
+import LineChart from "./LineChart";
+import Loader from "./Loader";
+
 import {
   useGetCryptoDetailsQuery,
   useGetCryptoHistoryQuery,
 } from "../services/cryptoApi";
-
-import LineChart from "./LineChart";
-import Loader from "./Loader";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -121,8 +123,9 @@ const CryptoDetails = () => {
         </p>
       </Col>
       <Select
+        bordered={false}
         defaultValue="7d"
-        className="select-timeperiod"
+        className="select-input"
         placeholder="Select Timeperiod"
         onChange={(value) => setTimeperiod(value)}
       >

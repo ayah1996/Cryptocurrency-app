@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from "react";
-import {
-  Avatar,
-  Col,
-  Collapse,
-  Row,
-  Select,
-  Table,
-  Tag,
-  Typography,
-} from "antd";
+
+import millify from "millify";
+
+import { Avatar, Col, Row, Select, Table, Tag, Typography } from "antd";
+
 import {
   useGetCryptosQuery,
   useGetCryptoExchangesQuery,
 } from "../services/cryptoApi";
+
 import Loader from "./Loader";
-import millify from "millify";
 
 const { Option } = Select;
-const { Panel } = Collapse;
 const { Text } = Typography;
 
 const Exchanges = () => {
@@ -90,6 +84,7 @@ const Exchanges = () => {
       title: "Recommended",
       dataIndex: "recommended",
       key: "recommended",
+      // responsive: ["md"],
     },
   ];
 
@@ -100,8 +95,9 @@ const Exchanges = () => {
       <Row gutter={[24, 24]}>
         <Col span={24}>
           <Select
+            bordered={false}
             showSearch
-            className="select-exchanges"
+            className="select-input"
             placeholder="Select a Crypto"
             optionFilterProp="children"
             onChange={(value) => {
@@ -113,7 +109,9 @@ const Exchanges = () => {
             style={{ marginBottom: "20px" }}
           >
             {data?.data?.coins.map((coin) => (
-              <Option value={coin.uuid}>{coin.name}</Option>
+              <Option value={coin.uuid} key={coin.uuid}>
+                {coin.name}
+              </Option>
             ))}
           </Select>
         </Col>

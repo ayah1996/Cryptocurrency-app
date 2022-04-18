@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Select, Typography, Row, Col, Avatar, Card } from "antd";
+
 import moment from "moment";
+
+import { Select, Typography, Row, Col, Avatar, Card } from "antd";
+
+import Loader from "./Loader";
 
 import { useGetCryptoNewsQuery } from "../services/CryptoNews";
 import { useGetCryptosQuery } from "../services/cryptoApi";
-
-import Loader from "./Loader";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -28,8 +30,9 @@ const News = ({ simplified, count }) => {
       {!simplified && (
         <Col span={24}>
           <Select
+            bordered={false}
             showSearch
-            className="select-news"
+            className="select-input"
             placeholder="Select a Crypto"
             optionFilterProp="children"
             onChange={(value) => setNewsCategory(value)}
@@ -46,21 +49,22 @@ const News = ({ simplified, count }) => {
       )}
       {cryptoNews.value.map((news, i) => (
         <Col xs={24} lg={12} xl={8} key={i}>
-          <Card hoverable className="news-card">
+          <Card bordered={false} hoverable className="news-card">
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">
                 <Title className="news-title" level={5}>
-                  {news.name}
+                  {news.name.length > 80
+                    ? `${news.name.substring(0, 80)} ... `
+                    : news.name}
                 </Title>
                 <img
                   src={news?.image?.thumbnail?.contentUrl || demoImage}
                   alt="news"
-                  style={{ maxWidth: "200px", maxHeight: "100px" }}
                 />
               </div>
-              <p>
-                {news.description > 100
-                  ? `${news.description.substring(0, 100)} ... `
+              <p className="news-description">
+                {news.description.length > 120
+                  ? `${news.description.substring(0, 120)} ... `
                   : news.description}
               </p>
               <div className="provider-container">
@@ -70,13 +74,14 @@ const News = ({ simplified, count }) => {
                       news.provider[0]?.image?.thumbnail?.contentUrl ||
                       demoImage
                     }
+                    className="provider-img"
                     alt="news"
                   />
                   <Text className="provider-name">
                     {news.provider[0]?.name}
                   </Text>
                 </div>
-                <Text>
+                <Text className="date-published">
                   {moment(news.datePublished).startOf("ss").fromNow()}
                 </Text>
               </div>

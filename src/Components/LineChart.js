@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Col, Row, Typography } from "antd";
+
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
@@ -15,7 +17,9 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
 
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
     coinTimestamp.push(
-      new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString()
+      new Date(
+        coinHistory?.data?.history[i].timestamp * 1000
+      ).toLocaleDateString()
     );
   }
   const data = {
@@ -24,8 +28,8 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
       {
         label: "Price In USD",
         data: coinPrice,
-        fill: false,
-        backgroundColor: "#0071bd",
+        fill: true,
+        backgroundColor: `rgba(0, 113, 189, 0.5)`,
         borderColor: "#0071bd",
       },
     ],

@@ -1,12 +1,15 @@
 import React from "react";
-import millify from "millify";
 import { Link } from "react-router-dom";
+
+import millify from "millify";
+
 import { Typography, Row, Col, Statistic, Card } from "antd";
-import { useGetCryptosQuery } from "../services/cryptoApi";
 
 import Cryptocurrencies from "./Cryptocurrencies";
 import News from "./News";
 import Loader from "./Loader";
+
+import { useGetCryptosQuery } from "../services/cryptoApi";
 
 const { Title } = Typography;
 
@@ -25,7 +28,7 @@ const Homepage = () => {
       </Title>
       <Row gutter={[16, 16]}>
         <Col flex={1}>
-          <Card>
+          <Card bordered={false}>
             <Statistic
               title="Total Cryptocurrencies"
               value={globalStats.total}
@@ -34,7 +37,7 @@ const Homepage = () => {
           </Card>
         </Col>
         <Col flex={1}>
-          <Card>
+          <Card bordered={false}>
             <Statistic
               title="Total Exchanges"
               value={millify(globalStats.totalExchanges)}
@@ -43,7 +46,7 @@ const Homepage = () => {
           </Card>
         </Col>
         <Col flex={1}>
-          <Card>
+          <Card bordered={false}>
             <Statistic
               title="Total Market Cap"
               value={millify(globalStats.totalMarketCap)}
@@ -52,7 +55,7 @@ const Homepage = () => {
           </Card>
         </Col>
         <Col flex={1}>
-          <Card>
+          <Card bordered={false}>
             <Statistic
               title="Total 24h Volume"
               value={millify(globalStats.total24hVolume)}
@@ -61,7 +64,7 @@ const Homepage = () => {
           </Card>
         </Col>
         <Col flex={1}>
-          <Card>
+          <Card bordered={false}>
             <Statistic
               title="Total Markets"
               value={millify(globalStats.totalMarkets)}
