@@ -1,6 +1,7 @@
 Cryptoverse App using CoinRanking API, Bing News Search, showing cryptos,
 exchanges, and news, more details about each currency, charts, data filtering,
 and much more.
+
 Fully Responsive App.
 
 Technologies used:
