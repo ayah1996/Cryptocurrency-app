@@ -3,6 +3,7 @@ exchanges, and news, more details about each currency, charts, data filtering,
 and much more.
 Fully Responsive App.
 
+
 Technologies used:
 Ant-design, React-redux, React-toolkit, Axios, Chart js, Millify, Moment.
 
